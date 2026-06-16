@@ -1,0 +1,230 @@
+{
+  "info": {
+    "name": "TP5 Backend Frontend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "PTO1 - Socios",
+      "item": [
+        {
+          "name": "Dar de alta un Socio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/socios",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Perez\",\n  \"foto\": \"https://example.com/foto.jpg\",\n  \"dni\": \"30111222\",\n  \"numeroSocio\": 1,\n  \"activo\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Recuperar TODOS los Socios",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/socios"
+          }
+        },
+        {
+          "name": "Recuperar socios ACTIVOS",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/socios/activos"
+          }
+        },
+        {
+          "name": "Modificar un Socio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/socios/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Perez\",\n  \"foto\": \"https://example.com/foto.jpg\",\n  \"dni\": \"30111222\",\n  \"numeroSocio\": 1,\n  \"activo\": false\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar un Socio",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/socios/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PTO2 - Transacciones",
+      "item": [
+        {
+          "name": "Dar de alta una Transaccion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/transacciones",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idiomaOrigen\": \"es\",\n  \"textoOrigen\": \"Hola mundo\",\n  \"idiomaDestino\": \"en\",\n  \"textoDestino\": \"Hello world\",\n  \"emailCliente\": \"cliente@mail.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Recuperar TODAS las Transacciones Registradas",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/transacciones"
+          }
+        },
+        {
+          "name": "Recuperar historico por cliente",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/transacciones/cliente/cliente@mail.com"
+          }
+        },
+        {
+          "name": "Recuperar por idioma origen y destino",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/transacciones/idiomas/es/en"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PTO3 - Empleados",
+      "item": [
+        {
+          "name": "Dar de alta un Empleado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/empleados",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apellido\": \"Gomez\",\n  \"nombre\": \"Ana\",\n  \"dni\": \"33222111\",\n  \"email\": \"ana.gomez@mail.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Obtener todos los Empleados",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/empleados"
+          }
+        },
+        {
+          "name": "Obtener UN Empleado",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/empleados/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PTO3 - Publicaciones",
+      "item": [
+        {
+          "name": "Dar de alta una Publicacion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/publicaciones",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Primera publicacion\",\n  \"contenido\": \"Contenido de prueba\",\n  \"imagenAsociada\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB\",\n  \"fechaPublicacion\": \"2026-06-15\",\n  \"vigente\": true,\n  \"empleado\": {\n    \"id\": 1\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Recuperar TODAS las publicaciones",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/publicaciones"
+          }
+        },
+        {
+          "name": "Buscar publicaciones GET params",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/publicaciones/buscar?titulo=publicacion&vigente=true"
+          }
+        },
+        {
+          "name": "Buscar publicaciones POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/publicaciones/buscar",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"publicacion\",\n  \"vigente\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Modificar una publicacion",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/publicaciones/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Publicacion modificada\",\n  \"contenido\": \"Contenido actualizado\",\n  \"imagenAsociada\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB\",\n  \"fechaPublicacion\": \"2026-06-15\",\n  \"vigente\": false,\n  \"empleado\": {\n    \"id\": 1\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar una publicacion",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/publicaciones/1"
+          }
+        }
+      ]
+    }
+  ]
+}

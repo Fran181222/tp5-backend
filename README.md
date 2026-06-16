@@ -1,4 +1,4 @@
-# Practica Backend-Frontend
+# Practica Backend
 
 API REST desarrollada con Express, Sequelize ORM y Postgres.
 
